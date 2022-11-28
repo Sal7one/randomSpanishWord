@@ -24,6 +24,7 @@ let currentvoice = synth.getVoices()[8]; // Spanish es-US
 document.querySelector(".speaker").addEventListener("click",()=>{
   let currentSpanishWord = document.querySelector("#word").innerHTML;
   const utterThis = new SpeechSynthesisUtterance(currentSpanishWord);
+  utterThis.lang = 'es-ES';
 
   if(currentvoice == synth.getVoices()[8] || currentvoice == undefined){
     currentvoice = synth.getVoices()[7] // Spanish es-ES
@@ -33,7 +34,6 @@ document.querySelector(".speaker").addEventListener("click",()=>{
     utterThis.voice = currentvoice;
   }
 
-  utterThis.lang = 'es-ES';
   synth.speak(utterThis);
 })
 
