@@ -2,6 +2,10 @@ let randomwordbtn = document.querySelector("#morebtn");
 randomwordbtn.addEventListener("click", nextWord)
 cleanedWords = JSON.parse(apiResponse);
 
+// Text To speach
+const synth = window.speechSynthesis;
+const voices = synth.getVoices();
+
 function nextWord(){
   let randomnumber= Math.floor(Math.random() * 1992);
   let bothWords = cleanedWords[randomnumber];
@@ -14,6 +18,31 @@ function nextWord(){
 nextWord();
 
 
+let currentvoice = synth.getVoices()[8]; // Spanish es-US
+
+// Text to speech 
+document.querySelector(".speaker").addEventListener("click",()=>{
+  let currentSpanishWord = document.querySelector("#word").innerHTML;
+  const utterThis = new SpeechSynthesisUtterance(currentSpanishWord);
+
+  if(currentvoice == synth.getVoices()[8] || currentvoice == undefined){
+    currentvoice = synth.getVoices()[7] // Spanish es-ES
+    utterThis.voice = currentvoice;
+  }else{
+    currentvoice = synth.getVoices()[8]
+    utterThis.voice = currentvoice;
+  }
+
+  utterThis.lang = 'es-ES';
+  synth.speak(utterThis);
+})
+
+// Google transalte to check
+document.querySelector(".translate").addEventListener("click",()=>{
+  let currentSpanishWord = document.querySelector("#word").innerHTML;
+  let link = `https://translate.google.com/?sl=es&tl=en&text=${encodeURIComponent(currentSpanishWord)}&op=translate`
+  window.open(link)
+})
 // Handle touch devices
 let touch_div = document.querySelector('.flip-card');
 let is_touch_device = false;

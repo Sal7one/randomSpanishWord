@@ -27,3 +27,15 @@
         font-weight: 700;
         border-radius: 7px;
       }
+
+      .helpers{
+        width: 300px;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 5px;
+        margin-bottom: 50px;
+        margin-right: 120px;
+      }
+      .speaker{
+        display: inline;
+      }
