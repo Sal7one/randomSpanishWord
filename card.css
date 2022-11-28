@@ -1,0 +1,97 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card{
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border:none;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    margin: 10px;
+    margin-bottom: 50px;
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner{
+    transform: rotateY(180deg);
+  }
+  .flip-card.touch-device .flip-card-inner{
+    transform: rotateY(0deg);
+  }
+  .flip-card.touch-device-hovered .flip-card-inner{
+    transform: rotateY(180deg);
+  }
+
+
+ .flag{
+    float: right;
+  }
+
+  .gbimage, .esimage{
+    display: none;
+    margin-top: 10px;
+  }
+
+  .flip-card.mouse-device .flag{
+    width: 50px;
+    height: 50px;
+  }
+  .flip-card.mouse-device .flag .esimage{
+    display: inline-block;
+  }
+  .flip-card.mouse-device .flag .gbimage{
+    display: none;
+  }
+  .flip-card:hover.mouse-device .flag .gbimage{
+    display: inline-block;
+  }
+  .flip-card:hover.mouse-device .flag .esimage{
+    display: none;
+  }
+
+  .flip-card.touch-device .flag::after{
+    content: "🇪🇸";
+  }
+  .flip-card.touch-device-hovered .flag::after{
+    content: "🇬🇧";
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 25px;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: rgb(184, 43, 43);
+    color: gold;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: darkblue;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: capitalize;
+  }
+
+
+ 

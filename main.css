@@ -1,0 +1,29 @@
+:root{
+    --main: #ffffff;
+    --second: white;
+  }
+  html, body{
+    height: 100%;
+  }
+
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      background-color: rgb(249, 249, 249);
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column
+        
+      }
+      h1{
+        margin-top: 0px;
+        padding: 0;
+      }
+
+      button{
+        width: 130px;
+        height: 36px;
+        font-weight: 700;
+        border-radius: 7px;
+      }
