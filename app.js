@@ -17,6 +17,14 @@ function nextWord(){
 
 nextWord();
 
+document.body.onkeyup = function(e) {
+  if (e.key == " " ||
+      e.code == "Space" ||      
+      e.keyCode == 32 || e.key == "Enter" || e.key == "n"
+  ) {
+    nextWord();
+  }
+}
 
 let currentvoice = synth.getVoices()[8]; // Spanish es-US
 
