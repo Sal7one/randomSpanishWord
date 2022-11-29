@@ -24,10 +24,19 @@
         flex-direction: column;
       }
 
+      .keys{
+        font-size:8px; 
+        margin-top:12px;
+        display: none;
+      }
+
       @media (min-width:1025px) {
         body{
           transform: scale(2.3);
           overflow: hidden;
+        }
+        .keys{
+          display: inline-block;
         }
        }
 
