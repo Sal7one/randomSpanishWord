@@ -13,6 +13,7 @@
     user-select:none;
 }
 
+
     body {
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       background-color: rgb(249, 249, 249);
@@ -20,9 +21,15 @@
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        flex-direction: column
-        
+        flex-direction: column;
       }
+
+      @media (min-width:1025px) {
+        body{
+          transform: scale(2.3);
+          overflow: hidden;
+        }
+       }
 
       h1{
         margin-top: 0px;
