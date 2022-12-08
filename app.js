@@ -1,18 +1,23 @@
 let randomwordbtn = document.querySelector("#morebtn");
 randomwordbtn.addEventListener("click", nextWord)
 cleanedWords = JSON.parse(apiResponse);
-
 // Text To speach
 const synth = window.speechSynthesis;
 const voices = synth.getVoices();
 
+let spanishVoice = 'es-ES';
+let usVoice = 'es-US';
+let utterThis = new SpeechSynthesisUtterance("");
+utterThis.lang = usVoice;
+
 function nextWord(){
-  let randomnumber= Math.floor(Math.random() * 1992);
+  let randomnumber= Math.floor(Math.random() * 1989);
   let bothWords = cleanedWords[randomnumber];
-  let englishWord = bothWords.substring(0, bothWords.indexOf("–"))
+  let englishWord = bothWords.substring(0, bothWords.indexOf("–")-1);
   let SpanishWord = bothWords.substring(bothWords.indexOf("–")+1);
   document.querySelector("#word").innerHTML = SpanishWord
   document.querySelector("#translation").innerHTML = englishWord
+  utterThis.text = SpanishWord
 }
 
 nextWord();
@@ -26,21 +31,12 @@ document.body.onkeyup = function(e) {
   }
 }
 
-let currentvoice = synth.getVoices()[8]; // Spanish es-US
-
 // Text to speech 
 document.querySelector(".speaker").addEventListener("click",()=>{
-  let currentSpanishWord = document.querySelector("#word").innerHTML;
-  const utterThis = new SpeechSynthesisUtterance(currentSpanishWord);
-  utterThis.lang = 'es-ES';
-
-  if(currentvoice == synth.getVoices()[8] || currentvoice == undefined){
-    currentvoice = synth.getVoices()[7] // Spanish es-ES
-    utterThis.voice = currentvoice;
-  }else{
-    currentvoice = synth.getVoices()[8]
-    utterThis.voice = currentvoice;
-  }
+  if(utterThis.lang == usVoice)
+    utterThis.lang = spanishVoice
+  else
+    utterThis.lang = usVoice
 
   synth.speak(utterThis);
 })
